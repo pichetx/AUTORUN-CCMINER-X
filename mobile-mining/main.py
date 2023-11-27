@@ -12,7 +12,7 @@ try:
             loads = json.loads(load)
             ip = loads['ip']
 
-    os.system(f"cd set-miner && wget -N --timeout 10 --connect-timeout=15 -t 1 http://{ip}/online.json")
+    os.system(f"cd set-miner && wget -N --timeout 10 --connect-timeout=15 -t 5 http://{ip}/online.json")
     time.sleep(2)
     from progress.bar import ShadyBar
 except ImportError:
