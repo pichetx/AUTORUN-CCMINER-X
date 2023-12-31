@@ -884,7 +884,7 @@ int share_result(int result, int pooln, double sharediff, const char *reason)
 		sprintf(solved, " solved: %u", p->solved_count);
 	}
 
-	applog(LOG_NOTICE, "\033[1;37;45m INFO   \033[0m Accepted: \033[36m%lu/%lu\033[0m (%s), \033[36m%s %s%s\033[0m",
+	applog(LOG_NOTICE, "\033[1;37;45m INFO   \033[0m Accepted: \033[36m%lu/%lu\033[0m \033[33m(%s)\033[0m, \033[36m%s %s%s\033[0m",
 			p->accepted_count,
 			p->accepted_count + p->rejected_count,
 			suppl, s, flag, solved);
@@ -1745,7 +1745,7 @@ static bool stratum_gen_work(struct stratum_ctx *sctx, struct work *work)
 		stratum_diff = sctx->job.diff;
 		if (opt_showdiff && work->targetdiff != stratum_diff)
 			snprintf(sdiff, 32, " (%.5f)", work->targetdiff);
-		applog(LOG_WARNING, "\033[1;37;45m INFO   \033[0m" "\033[33mStratum difficulty set to %g%s\033[0m", stratum_diff, sdiff);
+		applog(LOG_WARNING, "\033[1;37;43m INFO   \033[0m" "\033[33mStratum difficulty set to %g%s\033[0m", stratum_diff, sdiff);
 	}
 
 	return true;
@@ -2708,7 +2708,7 @@ wait_stratum_url:
 		goto out;
 
 	if (!pool_is_switching)
-		applog(LOG_BLUE, "\033[1;37;45m INFO   \033[0m""\033[36m Starting on %s \033[0m", stratum.url);
+		applog(LOG_BLUE, "\033[1;37;46m INFO   \033[0m""\033[36m Starting on %s \033[0m", stratum.url);
 
 	ctx->pooln = pooln = cur_pooln;
 	switchn = pool_switch_count;
